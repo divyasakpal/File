@@ -62,9 +62,9 @@
                     if (successCallback) {
                         fileSystems.getFs(file_system.name, function(fs) {
                             // This should happen only on platforms that haven't implemented requestAllFileSystems (windows)
-                            if (fs) {
-                                fs.root.nativeURL = "/d";
-                               // fs = new FileSystem(file_system.name, file_system.root);
+                            if (!fs) {
+                               // fs.root.nativeURL = "/d";
+                                fs = new FileSystem(file_system.name, file_system.root);
                             }
                             successCallback(fs);
                         });
